@@ -4,20 +4,22 @@ declare(strict_types=1);
 
 namespace Framework;
 
-class App {
-    private Router $router;
+class App
+{
+    private Router $router;    // der Typ ist eine Router Klasse
 
     public function __construct()
     {
         $this->router = new Router();
     }
 
-    public function run() {
+    public function run()
+    {
         echo "Application is running";
     }
 
-    public function add(string $path) 
+    public function get(string $path)
     {
-        $this->router->add($path);
+        $this->router->add('GET', $path);
     }
 }
