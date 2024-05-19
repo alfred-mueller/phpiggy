@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Framework;
 
+
+// Die Klasse App soll die Framework-Tools vorbereiten
 class App
 {
     private Router $router;    // der Typ ist eine Router Klasse
