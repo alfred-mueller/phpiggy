@@ -17,8 +17,8 @@ class App
 
     public function run()
     {
-        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-        $method = $_SERVER['REQUEST_METHOD'];
+        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);  //parse_url: erlaubt uns teile aus einer url zu extrahieren
+        $method = $_SERVER['REQUEST_METHOD'];  // $_SERVER['REQUEST_METHOD'] liefert die methode (GET)
         $this->router->dispatch($path, $method);
     }
 

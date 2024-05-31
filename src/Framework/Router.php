@@ -19,7 +19,7 @@ class Router
         ];
     }
 
-    private function normalizePath(string $path): string      // typisiert den Rückgabewert als string
+    private function normalizePath(string $path): string      // typisiert den Rückgabewert als string; Returntype ist string
     {
         $path = trim($path, '/');   //falls bereits schrägstriche vorhanden
         $path = "/{$path}/";        //vor und hinter dem pfad werden schrägstriche gesetzt
@@ -33,16 +33,23 @@ class Router
         $path = $this->normalizePath($path);
         $method = strtoupper($method);
 
+        // echo $path . $method;
+
         foreach ($this->routes as $route) {
-            if (!preg_match("#^{$route['path']}$#", $path) || $route['method'] !== $method) {
+            if (
+                !preg_match("#^{$route['path']}$#", $path) ||
+                $route['method'] !== $method
+            ) {
                 continue;  // erlaubt, zum nächsten element zu wechseln
             }
 
-            [$class, $function] = $route['controller'];
+            // echo 'route found';
 
-            $controllerInstance = new $class;
+            [$class, $function] = $route['controller'];  // destruction array! controller = array, speichert den namen der class und der methode
 
-            $controllerInstance->{$function}();
+            $controllerInstance = new $class;  // instanziert die klasse
+
+            $controllerInstance->{$function}(); // ruft die methode auf
         }
     }
 }

@@ -19,7 +19,9 @@ class HomeController
 
     public function home()
     {
-        //$secret = "alfred";
-        $this->view->render("/index.php");
+        //dd($this->view);  //überprüfen ob eine instanz der klasse erzeugt wurde
+        $this->view->render("/index.php", [
+            'title' => 'Home Page Title'
+        ]);
     }
 }
